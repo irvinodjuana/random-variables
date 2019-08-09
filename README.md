@@ -1,2 +1,2 @@
 # RandomVariables
-iOS app for visualization of probability distributions
+iOS app for visualizing probability distributions
