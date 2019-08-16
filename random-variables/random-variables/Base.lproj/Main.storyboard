@@ -24,10 +24,60 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="59" translatesAutoresizingMaskIntoConstraints="NO" id="LXQ-bP-wPO" userLabel="Vars Stack View">
+                                <rect key="frame" x="62.5" y="346.5" width="289" height="203"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="91E-5p-paK" userLabel="Disc Stack View">
+                                        <rect key="frame" x="0.0" y="0.0" width="109" height="203"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cua-A4-vH7">
+                                                <rect key="frame" x="0.0" y="0.0" width="109" height="41"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                <state key="normal" title="Bernoulli"/>
+                                                <connections>
+                                                    <action selector="bernoulliSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fAP-ZS-J2J"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UTI-Je-4Dk">
+                                                <rect key="frame" x="0.0" y="81" width="109" height="41"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                <state key="normal" title="Geometric"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RYv-SJ-VYt">
+                                                <rect key="frame" x="0.0" y="162" width="109" height="41"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                <state key="normal" title="Binomial"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="rfb-AV-bvj" userLabel="Cont Stack View">
+                                        <rect key="frame" x="168" y="0.0" width="121" height="203"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cAf-sP-L4k">
+                                                <rect key="frame" x="0.0" y="0.0" width="121" height="41"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                <state key="normal" title="Uniform"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QaQ-fO-hPL">
+                                                <rect key="frame" x="0.0" y="81" width="121" height="41"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                <state key="normal" title="Normal"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="18o-9p-U67">
+                                                <rect key="frame" x="0.0" y="162" width="121" height="41"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                <state key="normal" title="Exponential"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="R8f-Su-1Tf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Fjw-2o-EVs"/>
+                            <constraint firstItem="LXQ-bP-wPO" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="SO9-f8-cwT"/>
+                            <constraint firstItem="LXQ-bP-wPO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aAh-wu-l7b"/>
                             <constraint firstItem="R8f-Su-1Tf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="70" id="fLf-AQ-rAP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
