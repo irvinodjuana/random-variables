@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NP3-6F-atq">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,16 +10,32 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="Ags-wK-7Gs">
+            <objects>
+                <navigationController id="NP3-6F-atq" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="f4z-HF-842">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="fOJ-cH-BEA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eJa-qi-ES0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-268" y="21"/>
+        </scene>
+        <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="random_variables" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="Main View Controller" customClass="ViewController" customModule="random_variables" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Random Variables" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8f-Su-1Tf">
-                                <rect key="frame" x="148" y="114" width="118.5" height="76.5"/>
+                                <rect key="frame" x="148" y="158" width="118.5" height="76.5"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -35,18 +51,24 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                 <state key="normal" title="Bernoulli"/>
                                                 <connections>
-                                                    <action selector="bernoulliSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fAP-ZS-J2J"/>
+                                                    <segue destination="0m7-pA-8Ig" kind="show" id="GEO-hc-afZ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RYv-SJ-VYt">
+                                                <rect key="frame" x="0.0" y="81" width="109" height="41"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                <state key="normal" title="Binomial"/>
+                                                <connections>
+                                                    <segue destination="eza-PB-n2r" kind="show" id="wgz-lk-8ds"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UTI-Je-4Dk">
-                                                <rect key="frame" x="0.0" y="81" width="109" height="41"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                <state key="normal" title="Geometric"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RYv-SJ-VYt">
                                                 <rect key="frame" x="0.0" y="162" width="109" height="41"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                <state key="normal" title="Binomial"/>
+                                                <state key="normal" title="Geometric"/>
+                                                <connections>
+                                                    <segue destination="Y8I-1V-lCP" kind="show" id="ss7-Hz-tEA"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -57,16 +79,25 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="121" height="41"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                 <state key="normal" title="Uniform"/>
+                                                <connections>
+                                                    <segue destination="s9s-5h-lBX" kind="show" id="9LK-Az-dYx"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QaQ-fO-hPL">
                                                 <rect key="frame" x="0.0" y="81" width="121" height="41"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                 <state key="normal" title="Normal"/>
+                                                <connections>
+                                                    <segue destination="S1W-I5-4e5" kind="show" id="X6M-nc-2lD"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="18o-9p-U67">
                                                 <rect key="frame" x="0.0" y="162" width="121" height="41"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                 <state key="normal" title="Exponential"/>
+                                                <connections>
+                                                    <segue destination="TRc-0Z-vig" kind="show" id="Dzj-6m-a1G"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -82,9 +113,173 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Pug-ge-NKo"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="691" y="21"/>
+        </scene>
+        <!--Binomial View Controller-->
+        <scene sceneID="SVH-3v-k5Y">
+            <objects>
+                <viewController id="eza-PB-n2r" userLabel="Binomial View Controller" customClass="BinomialViewController" customModule="random_variables" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="otQ-Ht-0oI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Binomial" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gp5-sO-jj1">
+                                <rect key="frame" x="151" y="158" width="112" height="38.5"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gp5-sO-jj1" firstAttribute="top" secondItem="tO0-P2-eZM" secondAttribute="top" constant="70" id="PS6-Wb-brt"/>
+                            <constraint firstItem="gp5-sO-jj1" firstAttribute="centerX" secondItem="otQ-Ht-0oI" secondAttribute="centerX" id="pl5-SP-zHb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="tO0-P2-eZM"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xwr-ec-A45" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1561" y="21"/>
+        </scene>
+        <!--Bernoulli View Controller-->
+        <scene sceneID="hYK-1q-LIo">
+            <objects>
+                <viewController id="0m7-pA-8Ig" userLabel="Bernoulli View Controller" customClass="BernoulliViewController" customModule="random_variables" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NKv-6m-sWe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bernoulli" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B3z-ul-d45">
+                                <rect key="frame" x="149.5" y="158" width="115" height="38.5"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="B3z-ul-d45" firstAttribute="centerX" secondItem="NKv-6m-sWe" secondAttribute="centerX" id="X4O-WB-vMQ"/>
+                            <constraint firstItem="B3z-ul-d45" firstAttribute="top" secondItem="gla-Qd-ZTA" secondAttribute="top" constant="70" id="h2z-0j-87c"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gla-Qd-ZTA"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dcJ-pS-6TZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1561" y="-710"/>
+        </scene>
+        <!--Geometric View Controller-->
+        <scene sceneID="1Qo-9u-PlC">
+            <objects>
+                <viewController id="Y8I-1V-lCP" userLabel="Geometric View Controller" customClass="GeometricViewController" customModule="random_variables" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="y67-Gh-K0l">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Geometric" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CGt-EY-fXs">
+                                <rect key="frame" x="139" y="158" width="136" height="38.5"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="CGt-EY-fXs" firstAttribute="top" secondItem="r06-KN-6k4" secondAttribute="top" constant="70" id="0Ao-s8-vM5"/>
+                            <constraint firstItem="CGt-EY-fXs" firstAttribute="centerX" secondItem="y67-Gh-K0l" secondAttribute="centerX" id="xgA-Ou-7mp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="r06-KN-6k4"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T3l-wX-jGe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1561" y="717"/>
+        </scene>
+        <!--Uniform View Controller-->
+        <scene sceneID="Dcr-Nr-dpe">
+            <objects>
+                <viewController id="s9s-5h-lBX" userLabel="Uniform View Controller" customClass="UniformViewController" customModule="random_variables" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Dfd-59-PZe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Uniform" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ybn-0M-ThZ">
+                                <rect key="frame" x="155.5" y="158" width="103.5" height="38.5"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ybn-0M-ThZ" firstAttribute="top" secondItem="V1W-GG-6ah" secondAttribute="top" constant="70" id="P5w-2I-gcL"/>
+                            <constraint firstItem="ybn-0M-ThZ" firstAttribute="centerX" secondItem="Dfd-59-PZe" secondAttribute="centerX" id="kY6-KW-c8c"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="V1W-GG-6ah"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UE2-JS-XKb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2355" y="-710"/>
+        </scene>
+        <!--Normal View Controller-->
+        <scene sceneID="VVK-uF-Ivo">
+            <objects>
+                <viewController id="S1W-I5-4e5" userLabel="Normal View Controller" customClass="NormalViewController" customModule="random_variables" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jmy-u6-eGO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Normal" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8P4-Yf-oiU">
+                                <rect key="frame" x="159.5" y="158" width="95.5" height="38.5"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="8P4-Yf-oiU" firstAttribute="top" secondItem="cCK-as-5jV" secondAttribute="top" constant="70" id="7xS-Ac-Yha"/>
+                            <constraint firstItem="8P4-Yf-oiU" firstAttribute="centerX" secondItem="jmy-u6-eGO" secondAttribute="centerX" id="jAI-D1-Wkl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cCK-as-5jV"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sdk-l3-KYQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2354" y="21"/>
+        </scene>
+        <!--Exponential View Controller-->
+        <scene sceneID="G4S-UF-70N">
+            <objects>
+                <viewController id="TRc-0Z-vig" userLabel="Exponential View Controller" customClass="ExponentialViewController" customModule="random_variables" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Mjk-ZP-xTC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exponential" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gq8-Uk-1lY">
+                                <rect key="frame" x="131.5" y="158" width="151.5" height="38.5"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gq8-Uk-1lY" firstAttribute="centerX" secondItem="Mjk-ZP-xTC" secondAttribute="centerX" id="L1O-ZD-iEh"/>
+                            <constraint firstItem="gq8-Uk-1lY" firstAttribute="top" secondItem="rWS-CZ-ob5" secondAttribute="top" constant="70" id="wSU-Mx-AHd"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="rWS-CZ-ob5"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e3U-lw-NCc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2354" y="717"/>
         </scene>
     </scenes>
 </document>
