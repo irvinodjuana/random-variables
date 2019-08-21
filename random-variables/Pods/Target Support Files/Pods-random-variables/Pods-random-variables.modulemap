@@ -1,0 +1,6 @@
+framework module Pods_random_variables {
+  umbrella header "Pods-random-variables-umbrella.h"
+
+  export *
+  module * { export * }
+}
