@@ -35,8 +35,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Random Variables" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8f-Su-1Tf">
-                                <rect key="frame" x="148" y="158" width="118.5" height="76.5"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="28"/>
+                                <rect key="frame" x="133" y="158" width="148" height="96"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -128,23 +128,99 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Binomial" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gp5-sO-jj1">
-                                <rect key="frame" x="151" y="158" width="112" height="38.5"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="28"/>
+                                <rect key="frame" x="137" y="158" width="140" height="48"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fXk-GC-w5j" userLabel="Parameter Stack View">
+                                <rect key="frame" x="113.5" y="246" width="187.5" height="32"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="X ~ Bin(" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B0x-f6-eGb">
+                                        <rect key="frame" x="0.0" y="0.0" width="71" height="32"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="n" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nvf-2J-qSi">
+                                        <rect key="frame" x="81" y="0.0" width="32.5" height="32"/>
+                                        <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cxg-4A-aH9">
+                                        <rect key="frame" x="123.5" y="0.0" width="6" height="32"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="p" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s51-0H-Xn4">
+                                        <rect key="frame" x="139.5" y="0.0" width="32.5" height="32"/>
+                                        <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=")" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYy-7g-53t">
+                                        <rect key="frame" x="182" y="0.0" width="5.5" height="32"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ad-ic-FHz">
+                                <rect key="frame" x="182" y="318" width="50" height="36"/>
+                                <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="Sdr-Pm-nFQ"/>
+                                    <constraint firstAttribute="height" constant="36" id="fm3-UG-DFt"/>
+                                </constraints>
+                                <state key="normal" title="Chart">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="chartButton:" destination="eza-PB-n2r" eventType="touchUpInside" id="gGo-nl-f3s"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g2K-01-brw" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="32" y="414" width="350" height="348"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="fXk-GC-w5j" firstAttribute="top" secondItem="gp5-sO-jj1" secondAttribute="bottom" constant="40" id="2uL-qu-Chp"/>
+                            <constraint firstItem="g2K-01-brw" firstAttribute="top" secondItem="6Ad-ic-FHz" secondAttribute="bottom" constant="60" id="9ep-Ud-UvP"/>
+                            <constraint firstItem="6Ad-ic-FHz" firstAttribute="top" secondItem="fXk-GC-w5j" secondAttribute="bottom" constant="40" id="BDi-UL-ar1"/>
+                            <constraint firstItem="g2K-01-brw" firstAttribute="leading" secondItem="tO0-P2-eZM" secondAttribute="leading" constant="32" id="FDn-nL-9LL"/>
                             <constraint firstItem="gp5-sO-jj1" firstAttribute="top" secondItem="tO0-P2-eZM" secondAttribute="top" constant="70" id="PS6-Wb-brt"/>
+                            <constraint firstItem="6Ad-ic-FHz" firstAttribute="centerX" secondItem="otQ-Ht-0oI" secondAttribute="centerX" id="ajf-Au-mUo"/>
+                            <constraint firstItem="fXk-GC-w5j" firstAttribute="centerX" secondItem="otQ-Ht-0oI" secondAttribute="centerX" id="ejf-P6-Fx6"/>
+                            <constraint firstItem="tO0-P2-eZM" firstAttribute="bottom" secondItem="g2K-01-brw" secondAttribute="bottom" constant="100" id="mYx-Ry-S6S"/>
                             <constraint firstItem="gp5-sO-jj1" firstAttribute="centerX" secondItem="otQ-Ht-0oI" secondAttribute="centerX" id="pl5-SP-zHb"/>
+                            <constraint firstItem="g2K-01-brw" firstAttribute="centerX" secondItem="gp5-sO-jj1" secondAttribute="centerX" id="xdo-QW-rgu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tO0-P2-eZM"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
+                    <connections>
+                        <outlet property="binomialChart" destination="g2K-01-brw" id="tbt-t2-b0P"/>
+                        <outlet property="n_text" destination="Nvf-2J-qSi" id="N5L-ON-4jL"/>
+                        <outlet property="p_text" destination="s51-0H-Xn4" id="eQU-ae-XAo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xwr-ec-A45" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1561" y="21"/>
+            <point key="canvasLocation" x="1560.8695652173915" y="20.758928571428569"/>
         </scene>
         <!--Bernoulli View Controller-->
         <scene sceneID="hYK-1q-LIo">
