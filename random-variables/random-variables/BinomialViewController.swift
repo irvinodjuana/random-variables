@@ -38,8 +38,8 @@ class BinomialViewController: UIViewController {
         } else if p_value! < 0.0 || p_value! > 1.0 {
             print("Invalid p-value, not between 0 and 1")
             //TODO: Handle correct error display later
-        } else if n_value! < 1 {
-            print("Invalid n-value, must be greater than 1")
+        } else if n_value! < 0 {
+            print("Invalid n-value, must be greater than 0")
         } else {
             let p = p_value!
             let n = n_value!
@@ -63,7 +63,7 @@ class BinomialViewController: UIViewController {
             lineChartEntry.append(value)
         }
         
-        let line1 = LineChartDataSet(entries: lineChartEntry, label: "X ~ Bin(\(n_value), \(p_value))")
+        let line1 = LineChartDataSet(entries: lineChartEntry, label: "Binomial Distribution")
         line1.colors = [NSUIColor.clear]
         line1.circleColors = [NSUIColor.orange]
         line1.circleRadius = CGFloat(5)
@@ -74,7 +74,7 @@ class BinomialViewController: UIViewController {
         data.addDataSet(line1)
         
         binomialChart.data = data
-        binomialChart.chartDescription?.text = "Binomial Distribution"
+        binomialChart.chartDescription?.text = "X ~ Bin(\(n_value), \(p_value))"
         
     }
     
