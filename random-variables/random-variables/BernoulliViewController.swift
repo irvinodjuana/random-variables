@@ -7,16 +7,40 @@
 //
 
 import UIKit
+import Charts
 
 class BernoulliViewController: UIViewController {
 
+    @IBOutlet weak var p_text: UITextField!
+    @IBOutlet weak var bernoulliChart: LineChartView!
+    var probabilities = [Double]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        // Setup general style and formatting
+        chartUtils.setupGraph(bernoulliChart)
     }
     
+    @IBAction func chartButton(_ sender: Any) {
+        let p_value = Double(p_text.text!)
+        
+        if p_value == nil {
+            print("nil value found")
+        } else if (p_value! < 0 || p_value! > 1) {
+            print("Invalid p-value: must be between 0 and 1")
+        } else {
+            probabilities = [Double]()
+            probabilities.append(1-p_value!)
+            probabilities.append(p_value!)
+            let description = "Bernoulli Distribution: (p = \(p_value!))"
+            chartUtils.updateGraph(bernoulliChart, probabilities, description)
+        }
+        
+        
+    }
 
+    
     /*
     // MARK: - Navigation
 

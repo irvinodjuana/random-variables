@@ -219,7 +219,7 @@
                             <constraint firstItem="fXk-GC-w5j" firstAttribute="centerX" secondItem="otQ-Ht-0oI" secondAttribute="centerX" id="ejf-P6-Fx6"/>
                             <constraint firstItem="tO0-P2-eZM" firstAttribute="bottom" secondItem="g2K-01-brw" secondAttribute="bottom" constant="100" id="mYx-Ry-S6S"/>
                             <constraint firstItem="gp5-sO-jj1" firstAttribute="centerX" secondItem="otQ-Ht-0oI" secondAttribute="centerX" id="pl5-SP-zHb"/>
-                            <constraint firstItem="g2K-01-brw" firstAttribute="centerX" secondItem="gp5-sO-jj1" secondAttribute="centerX" id="xdo-QW-rgu"/>
+                            <constraint firstItem="g2K-01-brw" firstAttribute="centerX" secondItem="otQ-Ht-0oI" secondAttribute="centerX" id="xdo-QW-rgu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tO0-P2-eZM"/>
                         <userDefinedRuntimeAttributes>
@@ -252,14 +252,73 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="REF-TK-KYf" userLabel="Parameter Stack View">
+                                <rect key="frame" x="136" y="246" width="142.5" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="X ~ Bern(" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wSs-iC-a09">
+                                        <rect key="frame" x="0.0" y="0.0" width="84.5" height="30"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="p" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dhG-8O-MG2">
+                                        <rect key="frame" x="94.5" y="0.0" width="32.5" height="30"/>
+                                        <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=")" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eyo-Tk-PaZ">
+                                        <rect key="frame" x="137" y="0.0" width="5.5" height="30"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ar7-z7-ja5">
+                                <rect key="frame" x="182" y="316" width="50" height="36"/>
+                                <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="Bfh-hb-AVe"/>
+                                    <constraint firstAttribute="height" constant="36" id="MGC-Xz-Skb"/>
+                                </constraints>
+                                <state key="normal" title="Chart">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="chartButton:" destination="0m7-pA-8Ig" eventType="touchUpInside" id="5ZY-kT-5jN"/>
+                                    <action selector="chartButton:" destination="eza-PB-n2r" eventType="touchUpInside" id="qFE-KB-E7X"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OZb-pD-blx" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="32" y="412" width="350" height="350"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="OZb-pD-blx" firstAttribute="centerX" secondItem="NKv-6m-sWe" secondAttribute="centerX" id="DHV-i7-dpC"/>
+                            <constraint firstItem="gla-Qd-ZTA" firstAttribute="bottom" secondItem="OZb-pD-blx" secondAttribute="bottom" constant="100" id="FhX-Vf-DgZ"/>
+                            <constraint firstItem="Ar7-z7-ja5" firstAttribute="centerX" secondItem="NKv-6m-sWe" secondAttribute="centerX" id="JDo-Bl-0aH"/>
+                            <constraint firstItem="REF-TK-KYf" firstAttribute="centerX" secondItem="NKv-6m-sWe" secondAttribute="centerX" id="RI0-Om-Pzd"/>
                             <constraint firstItem="B3z-ul-d45" firstAttribute="centerX" secondItem="NKv-6m-sWe" secondAttribute="centerX" id="X4O-WB-vMQ"/>
+                            <constraint firstItem="Ar7-z7-ja5" firstAttribute="top" secondItem="REF-TK-KYf" secondAttribute="bottom" constant="40" id="cj3-fU-bqb"/>
                             <constraint firstItem="B3z-ul-d45" firstAttribute="top" secondItem="gla-Qd-ZTA" secondAttribute="top" constant="70" id="h2z-0j-87c"/>
+                            <constraint firstItem="REF-TK-KYf" firstAttribute="top" secondItem="B3z-ul-d45" secondAttribute="bottom" constant="40" id="iAO-xw-G50"/>
+                            <constraint firstItem="OZb-pD-blx" firstAttribute="leading" secondItem="gla-Qd-ZTA" secondAttribute="leading" constant="32" id="k1L-UX-Y8P"/>
+                            <constraint firstItem="OZb-pD-blx" firstAttribute="top" secondItem="Ar7-z7-ja5" secondAttribute="bottom" constant="60" id="wZW-B4-mzi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gla-Qd-ZTA"/>
                     </view>
+                    <connections>
+                        <outlet property="bernoulliChart" destination="OZb-pD-blx" id="Qxn-nE-bkr"/>
+                        <outlet property="p_text" destination="dhG-8O-MG2" id="fWL-D2-jPE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dcJ-pS-6TZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
