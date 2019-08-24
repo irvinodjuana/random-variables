@@ -20,8 +20,13 @@ class BinomialViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Setup chart style and formatting
         binomialChart.noDataText = ""
+        binomialChart.chartDescription?.text = ""
+        binomialChart.xAxis.labelPosition = .bottom
+        binomialChart.rightAxis.enabled = false
+        binomialChart.xAxis.drawGridLinesEnabled = false
+        binomialChart.leftAxis.axisMinimum = 0.0
         
     }
     
@@ -40,6 +45,7 @@ class BinomialViewController: UIViewController {
             //TODO: Handle correct error display later
         } else if n_value! < 0 {
             print("Invalid n-value, must be greater than 0")
+            //TODO: Handle correct error display later
         } else {
             let p = p_value!
             let n = n_value!
@@ -56,26 +62,25 @@ class BinomialViewController: UIViewController {
     }
     
     func updateGraph(_ n_value: Int, _ p_value: Double) {
+        // Update the graph view with new parameters
         var lineChartEntry = [ChartDataEntry]()
         
+        // format doubles to correct datatype
         for i in 0..<probabilities.count {
             let value = ChartDataEntry(x: Double(i), y: probabilities[i])
             lineChartEntry.append(value)
         }
         
-        let line1 = LineChartDataSet(entries: lineChartEntry, label: "Binomial Distribution")
+        // Add dataset information to chart
+        let line1 = LineChartDataSet(entries: lineChartEntry, label: "Binomial Distribution: X ~ Bin(\(n_value), \(p_value))")
         line1.colors = [NSUIColor.clear]
         line1.circleColors = [NSUIColor.orange]
         line1.circleRadius = CGFloat(5)
         
-        
-        
         let data = LineChartData()
         data.addDataSet(line1)
-        
         binomialChart.data = data
-        binomialChart.chartDescription?.text = "X ~ Bin(\(n_value), \(p_value))"
-        
+    
     }
     
     // Math Functions
