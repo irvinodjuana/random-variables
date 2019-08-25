@@ -19,25 +19,32 @@ class BernoulliViewController: UIViewController {
         super.viewDidLoad()
         
         // Setup general style and formatting
-        chartUtils.setupGraph(bernoulliChart)
+        chartUtils.setupChart(bernoulliChart)
     }
     
     @IBAction func chartButton(_ sender: Any) {
         let p_value = Double(p_text.text!)
         
-        if p_value == nil {
-            print("nil value found")
-        } else if (p_value! < 0 || p_value! > 1) {
-            print("Invalid p-value: must be between 0 and 1")
+        if let p = p_value {
+            // p is a numeric input
+            if (p >= 0 && p <= 1) {
+                // Correct input
+                let p = p_value!
+                probabilities = [Double]()
+                probabilities.append(1-p)
+                probabilities.append(p)
+                
+                let description = "Bernoulli Distribution: (p = \(p))"
+                chartUtils.updateChart(bernoulliChart, probabilities, description)
+                
+            } else {
+                // p-value found not between 0 and 1
+                print("Invalid p-value: must be between 0 and 1")
+            }
         } else {
-            probabilities = [Double]()
-            probabilities.append(1-p_value!)
-            probabilities.append(p_value!)
-            let description = "Bernoulli Distribution: (p = \(p_value!))"
-            chartUtils.updateGraph(bernoulliChart, probabilities, description)
+            // Invalid text field for double value
+            print("Invalid entry for p")
         }
-        
-        
     }
 
     

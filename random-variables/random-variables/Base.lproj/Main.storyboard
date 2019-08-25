@@ -338,15 +338,74 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="85I-Vf-lAn" userLabel="Parameter Stack View">
+                                <rect key="frame" x="129" y="246" width="156" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="X ~ Geom(" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="thm-ek-vDX">
+                                        <rect key="frame" x="0.0" y="0.0" width="98" height="30"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="p" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JhY-h1-adi">
+                                        <rect key="frame" x="108" y="0.0" width="32.5" height="30"/>
+                                        <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=")" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cux-oi-H2u">
+                                        <rect key="frame" x="150.5" y="0.0" width="5.5" height="30"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KsV-F6-NCp">
+                                <rect key="frame" x="182" y="316" width="50" height="36"/>
+                                <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="O2W-96-unm"/>
+                                    <constraint firstAttribute="width" constant="50" id="kqi-gV-pED"/>
+                                </constraints>
+                                <state key="normal" title="Chart">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="chartButton:" destination="Y8I-1V-lCP" eventType="touchUpInside" id="aib-ae-BvV"/>
+                                    <action selector="chartButton:" destination="eza-PB-n2r" eventType="touchUpInside" id="qLW-Fb-HDC"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g2B-Fa-vYE" userLabel="Geometric Chart" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="32" y="412" width="350" height="350"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="CGt-EY-fXs" firstAttribute="top" secondItem="r06-KN-6k4" secondAttribute="top" constant="70" id="0Ao-s8-vM5"/>
+                            <constraint firstItem="KsV-F6-NCp" firstAttribute="centerX" secondItem="y67-Gh-K0l" secondAttribute="centerX" id="1l7-sx-SCC"/>
+                            <constraint firstItem="g2B-Fa-vYE" firstAttribute="top" secondItem="KsV-F6-NCp" secondAttribute="bottom" constant="60" id="5r6-YW-VNH"/>
+                            <constraint firstItem="r06-KN-6k4" firstAttribute="bottom" secondItem="g2B-Fa-vYE" secondAttribute="bottom" constant="100" id="7nf-Ce-atG"/>
+                            <constraint firstItem="g2B-Fa-vYE" firstAttribute="centerX" secondItem="y67-Gh-K0l" secondAttribute="centerX" id="YFW-id-fLe"/>
+                            <constraint firstItem="85I-Vf-lAn" firstAttribute="top" secondItem="CGt-EY-fXs" secondAttribute="bottom" constant="40" id="aWK-dz-OpG"/>
+                            <constraint firstItem="85I-Vf-lAn" firstAttribute="centerX" secondItem="y67-Gh-K0l" secondAttribute="centerX" id="hag-nw-4sM"/>
+                            <constraint firstItem="KsV-F6-NCp" firstAttribute="top" secondItem="85I-Vf-lAn" secondAttribute="bottom" constant="40" id="luE-fT-eYZ"/>
                             <constraint firstItem="CGt-EY-fXs" firstAttribute="centerX" secondItem="y67-Gh-K0l" secondAttribute="centerX" id="rFc-Gh-6i8"/>
                             <constraint firstItem="CGt-EY-fXs" firstAttribute="centerX" secondItem="y67-Gh-K0l" secondAttribute="centerX" id="xgA-Ou-7mp"/>
+                            <constraint firstItem="g2B-Fa-vYE" firstAttribute="leading" secondItem="r06-KN-6k4" secondAttribute="leading" constant="32" id="zRs-G7-1dr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="r06-KN-6k4"/>
                     </view>
+                    <connections>
+                        <outlet property="geometricChart" destination="g2B-Fa-vYE" id="cFl-Rq-HRV"/>
+                        <outlet property="p_text" destination="JhY-h1-adi" id="zua-nd-Ahc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T3l-wX-jGe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

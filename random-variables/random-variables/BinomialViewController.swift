@@ -21,7 +21,7 @@ class BinomialViewController: UIViewController {
         super.viewDidLoad()
 
         // Setup general style and formatting
-        chartUtils.setupGraph(binomialChart)
+        chartUtils.setupChart(binomialChart)
     }
     
 
@@ -31,29 +31,31 @@ class BinomialViewController: UIViewController {
         let n_value = Int(n_text.text!)
         let p_value = Double(p_text.text!)
         
-        if n_value == nil || p_value == nil {
-            // Check inputs are valid
-            print("One or more nil values found")
-        } else if p_value! < 0.0 || p_value! > 1.0 {
-            print("Invalid p-value, not between 0 and 1")
-            //TODO: Handle correct error display later
-        } else if n_value! < 0 {
-            print("Invalid n-value, must be greater than 0")
-            //TODO: Handle correct error display later
-        } else {
-            let p = p_value!
-            let n = n_value!
-            let q = 1-p
-            let description = "Binomial Distribution: (n = \(n), p = \(p))"
-            probabilities = [Double]()
-            
-            for k in 0...n {
-                let p_entry = math.choose(n: n, k: k) * pow(p, Double(k)) * pow(q, Double(n-k))
-                probabilities.append(p_entry)
+        if let p = p_value, let n = n_value {
+            // all inputs are correct numeric entries here
+            if p < 0.0 || p > 1.0 {
+                print("Invalid p-value, not between 0 and 1")
+                //TODO: Handle correct error display later
+            } else if n < 0 {
+                print("Invalid n-value, must be greater than 0")
+                //TODO: Handle correct error display later
+            } else {
+                let q = 1-p
+                let description = "Binomial Distribution: (n = \(n), p = \(p))"
+                probabilities = [Double]()
+                
+                for k in 0...n {
+                    let p_entry = math.choose(n: n, k: k) * pow(p, Double(k)) * pow(q, Double(n-k))
+                    probabilities.append(p_entry)
+                }
+                chartUtils.updateChart(binomialChart, probabilities, description)
             }
             
-            chartUtils.updateGraph(binomialChart, probabilities, description)
+        } else {
+            // One or more non-numeric entries found for n / p
+            print("Invalid entries for n or p.")
         }
+    
     }
     
     

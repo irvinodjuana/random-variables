@@ -7,16 +7,57 @@
 //
 
 import UIKit
+import Charts
 
 class GeometricViewController: UIViewController {
 
+    @IBOutlet weak var p_text: UITextField!
+    @IBOutlet weak var geometricChart: LineChartView!
+    
+    var probabilities = [Double]()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
+        chartUtils.setupChart(geometricChart)
     }
     
 
+    @IBAction func chartButton(_ sender: Any) {
+        let p_value = Double(p_text.text!)
+        
+        if let p = p_value {
+            // p input is numeric
+            if (p >= 0 && p <= 1) {
+                // Correct input
+                probabilities = [Double]()
+                var k = 1
+                var p_entry = 1.0
+                
+                // arbitrary limits set on number of data points placed on graph
+                // geometric distribution is infinite
+                while (p_entry > 0.0001 || k <= 10) && (k < 100) {
+                    p_entry = pow(1-p, Double(k-1)) * p
+                    probabilities.append(p_entry)
+                    k += 1
+                }
+                
+                let description = "Geometric Distribution: (p = \(p))"
+                chartUtils.updateChart(geometricChart, probabilities, description)
+                
+            } else {
+                // p input not between 0 and 1
+                print("Invalid: p must be between 0 and 1")
+            }
+        } else {
+            // Non-numeric entry for p found
+            print("Invalid entry for p")
+        }
+        
+    }
+    
     /*
     // MARK: - Navigation
 

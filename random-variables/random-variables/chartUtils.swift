@@ -12,7 +12,7 @@ import Charts
 class chartUtils {
     // Class for generic shared chart functions/methods
     
-    static func setupGraph(_ chartView: LineChartView) {
+    static func setupChart(_ chartView: LineChartView) {
         // Setup basic line chart style format
         chartView.noDataText = ""
         chartView.chartDescription?.text = ""
@@ -24,7 +24,7 @@ class chartUtils {
         
     }
     
-    static func updateGraph(_ chartView: LineChartView, _ probabilities: [Double], _ description: String) {
+    static func updateChart(_ chartView: LineChartView, _ probabilities: [Double], _ description: String) {
         // Update the graph view with new parameters
         
         var lineChartEntry = [ChartDataEntry]()
