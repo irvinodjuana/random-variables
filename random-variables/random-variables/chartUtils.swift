@@ -24,13 +24,13 @@ class chartUtils {
         
     }
     
-    static func updateChart(_ chartView: LineChartView, _ probabilities: [Double], _ description: String) {
+    static func updateChart(_ chartView: LineChartView, _ probabilities: [Double], _ description: String, startIndex: Int = 0) {
         // Update the graph view with new parameters
         
         var lineChartEntry = [ChartDataEntry]()
         
         // Format doubles to correct datatype
-        for i in 0..<probabilities.count {
+        for i in startIndex..<probabilities.count {
             let value = ChartDataEntry(x: Double(i), y: probabilities[i])
             lineChartEntry.append(value)
         }
