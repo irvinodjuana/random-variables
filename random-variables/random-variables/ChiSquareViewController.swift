@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import Charts
 
 class ChiSquareViewController: UIViewController {
+    
+    @IBOutlet weak var df_text: UITextField!
+    @IBOutlet weak var chisquareChart: LineChartView!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,7 +21,9 @@ class ChiSquareViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func chartButton(_ sender: Any) {
+    }
+    
     /*
     // MARK: - Navigation
 

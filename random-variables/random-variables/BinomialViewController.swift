@@ -48,7 +48,7 @@ class BinomialViewController: UIViewController {
                     let p_entry = math.choose(n: n, k: k) * pow(p, Double(k)) * pow(q, Double(n-k))
                     probabilities.append(p_entry)
                 }
-                chartUtils.updateChart(binomialChart, probabilities, description)
+                chartUtils.updateChartDiscrete(binomialChart, probabilities, description)
             }
             
         } else {

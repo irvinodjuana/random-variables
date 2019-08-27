@@ -40,7 +40,7 @@ class PoissonViewController: UIViewController {
                 }
                 
                 let description = "Poisson Distribution: (lambda = \(lambda))"
-                chartUtils.updateChart(poissonChart, probabilities, description)
+                chartUtils.updateChartDiscrete(poissonChart, probabilities, description)
                 
             } else {
                 // lambda inputted was less than or equal to 0

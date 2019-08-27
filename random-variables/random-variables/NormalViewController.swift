@@ -7,13 +7,22 @@
 //
 
 import UIKit
+import Charts
 
 class NormalViewController: UIViewController {
-
+    
+    @IBOutlet weak var mu_text: UITextField!
+    @IBOutlet weak var sigma_text: UITextField!
+    @IBOutlet weak var normalChart: LineChartView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func chartButton(_ sender: Any) {
     }
     
 

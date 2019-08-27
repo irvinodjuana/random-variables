@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import Charts
 
 class ExponentialViewController: UIViewController {
+    
+    @IBOutlet weak var lambda_text: UITextField!
+    @IBOutlet weak var exponentialChart: LineChartView!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,7 +21,9 @@ class ExponentialViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func chartButton(_ sender: Any) {
+    }
+    
     /*
     // MARK: - Navigation
 

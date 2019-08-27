@@ -24,9 +24,8 @@ class chartUtils {
         
     }
     
-    static func updateChart(_ chartView: LineChartView, _ probabilities: [Double], _ description: String, startIndex: Int = 0) {
+    static func updateChartDiscrete(_ chartView: LineChartView, _ probabilities: [Double], _ description: String, startIndex: Int = 0) {
         // Update the graph view with new parameters
-        
         var lineChartEntry = [ChartDataEntry]()
         
         // Format doubles to correct datatype
@@ -47,6 +46,30 @@ class chartUtils {
         data.setDrawValues(false)
         chartView.data = data
     }
+    
+    static func updateChartContinuous(_ chartView: LineChartView, _ probabilities: [Double], _ description: String, startIndex: Int = 0) {
+        // update graph
+        var lineChartEntry = [ChartDataEntry]()
+        
+        for i in 0..<probabilities.count {
+            let value = ChartDataEntry(x: Double(i), y: probabilities[i])
+            lineChartEntry.append(value)
+        }
+        
+        // Format dataset into a line chart data set
+        let line = LineChartDataSet(entries: lineChartEntry, label: description)
+        line.colors = [NSUIColor.orange]
+        line.mode = .cubicBezier
+        line.circleColors = [NSUIColor.clear]
+        line.circleRadius = CGFloat(0)
+        
+        // Add line to graph view
+        let data = LineChartData()
+        data.addDataSet(line)
+        data.setDrawValues(false)
+        chartView.data = data
+    }
+    
 }
 
 

@@ -7,8 +7,14 @@
 //
 
 import UIKit
+import Charts
 
 class UniformViewController: UIViewController {
+    
+    @IBOutlet weak var a_text: UITextField!
+    @IBOutlet weak var b_text: UITextField!
+    @IBOutlet weak var uniformChart: LineChartView!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,7 +22,9 @@ class UniformViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func chartButton(_ sender: Any) {
+    }
+    
     /*
     // MARK: - Navigation
 
