@@ -33,7 +33,7 @@ class GeometricViewController: UIViewController {
             if (p >= 0 && p <= 1) {
                 // Correct input
                 probabilities = [Double]()
-                var k = 1
+                var k = 0
                 var p_entry = 1.0
                 
                 // arbitrary limits set on number of data points placed on graph

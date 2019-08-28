@@ -15,14 +15,41 @@ class UniformViewController: UIViewController {
     @IBOutlet weak var b_text: UITextField!
     @IBOutlet weak var uniformChart: LineChartView!
     
+    var probabilities = [(Double, Double)]()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        chartUtils.setupChart(uniformChart)
     }
     
     @IBAction func chartButton(_ sender: Any) {
+        // Chart button pressed - input values into graph
+        let a_value = Double(a_text.text!)
+        let b_value = Double(b_text.text!)
+        probabilities = [(Double, Double)]()
+        
+        if let a = a_value, let b = b_value {
+            if (b > a) {
+                // correct input
+                let height = 1 / (b-a)
+                probabilities.append((a, height))
+                probabilities.append((b, height))
+                
+                let description = "Uniform Distribution: (a = \(a), b = \(b))"
+                chartUtils.updateChartContinuous(uniformChart, probabilities, description, circles: true)
+                chartUtils.setChartBounds(chart: uniformChart,
+                                          xMin: a - 0.75*(b-a), xMax: b + 0.75*(b-a), yMin: 0, yMax: 2/(b-a))
+            } else {
+                // invalid as b less than a
+                print("Invalid: b must be greater than a")
+            }
+        } else {
+            // one or more non-double values found in text field
+            print("Invalid: one or more nil values found")
+        }
     }
     
     /*
