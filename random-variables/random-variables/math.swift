@@ -31,4 +31,8 @@ class math {
         return numerator / denominator
     }
     
+    static func ln(_ x: Double) -> Double {
+        // Returns natural log of x
+        return log(x) / log(exp(1))
+    }
 }

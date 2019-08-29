@@ -16,7 +16,7 @@ class chartUtils {
     static let graphColour = UIColor.magenta
     static let lineColour = graphColour.withAlphaComponent(0.4)
     static let gridColour = UIColor.lightGray.withAlphaComponent(0.5)
-    static let circleRadius = 4.0
+    static let circleRadius = 3.0
     
     static func setupChart(_ chartView: LineChartView) {
         // Setup basic line chart style format
@@ -27,7 +27,6 @@ class chartUtils {
         chartView.xAxis.labelPosition = .bottom
         chartView.xAxis.drawGridLinesEnabled = true
         chartView.xAxis.gridColor = gridColour
-        chartView.xAxis.granularity = 1
         // y-axis properties
         chartView.leftAxis.drawGridLinesEnabled = true
         chartView.leftAxis.gridColor = gridColour
@@ -70,6 +69,7 @@ class chartUtils {
         // Add data to chart and format nicely
         data.setDrawValues(false)
         chartView.data = data
+        chartView.xAxis.granularity = 1
         setChartBoundsX(chart: chartView, xMin: Double(startIndex) - 1.0, xMax: Double(probabilities.count))
     }
     

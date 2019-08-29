@@ -35,14 +35,13 @@ class NormalViewController: UIViewController {
             if sigma > 0 {
                 // correct input for (mu), (sigma)
                 
-                // arbitrarily define range of graphed area as (mu) +/- 5(sigma)
-                let lower = mu - 5 * sigma
-                let upper = mu + 5 * sigma
-                let step = sigma / 10  // 100 data points
-                
+                // arbitrarily define range of graphed area as (mu) +/- 4(sigma)
+                let lower = mu - 4 * sigma
+                let upper = mu + 4 * sigma
+                let step = sigma / 10  // 10 data points per std deviation
                 var x = lower
                 
-                // Add 100 evenly spaced data points along normal distribution
+                // Add 80 evenly spaced data points along normal distribution
                 while (x <= upper) {
                     probabilities.append((x, pdf(x, mu, sigma)))
                     x += step
