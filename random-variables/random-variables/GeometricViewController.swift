@@ -19,6 +19,7 @@ class GeometricViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTapped()
         
         // Do any additional setup after loading the view.
         chartUtils.setupChart(geometricChart)

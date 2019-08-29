@@ -19,12 +19,11 @@ class BinomialViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTapped()
 
         // Setup general style and formatting
         chartUtils.setupChart(binomialChart)
     }
-    
-
     
     @IBAction func chartButton(_ sender: Any) {
         // Chart button pressed - generate chart from input parameters

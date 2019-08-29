@@ -17,6 +17,7 @@ class BernoulliViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTapped()
         
         // Setup general style and formatting
         chartUtils.setupChart(bernoulliChart)
