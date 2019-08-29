@@ -9,10 +9,11 @@
 import Foundation
 
 class math {
-    // Class for shared math utility functions
+    // Class for shared math functions
     
     static func factorial(_ n: Int) -> Double {
-        // Returns n! (factorial of n) - uses double to handle larger ints
+        // Returns: n! (factorial of n) as double
+        // Requires: n >= 0
         if n == 0 {
             return 1
         }
@@ -21,6 +22,29 @@ class math {
         for i in 1...n {
             product *= Double(i)
         }
+        return product
+    }
+    
+    static func doubleFactorial(_ n: Int) -> Double {
+        // Returns: n!! the double factorial or semifactorial of n
+        // Requires: n >= -1 (not complete implementation)
+        if n <= 0 {
+            return 1
+        }
+        var start: Double = 0.0
+        var product: Double = 1.0
+        
+        if n % 2 == 0 {
+            start = 2.0
+        } else {
+            start = 1.0
+        }
+        
+        while (start <= Double(n)) {
+            product *= start
+            start += 2.0
+        }
+        
         return product
     }
     
@@ -34,5 +58,22 @@ class math {
     static func ln(_ x: Double) -> Double {
         // Returns natural log of x
         return log(x) / log(exp(1))
+    }
+    
+    static func gamma(_ x: Double) -> Double {
+        // Returns: gamma function of x
+        // Requires: x is positive and x is an integer or half-integer
+        if (x <= 0) {
+            return -1 // invalid input
+        }
+        let rem = x.remainder(dividingBy: 1.0)
+        
+        if rem == 0.0 {
+            return factorial(Int(x) - 1)
+        } else if rem == 0.5 || rem == -0.5  {
+            return sqrt(Double.pi) * doubleFactorial(Int(2.0 * x) - 2) / pow(2, x - 0.5)
+        } else {
+            return -1.0 // invalid input
+        }
     }
 }
