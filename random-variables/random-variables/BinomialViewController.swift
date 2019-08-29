@@ -41,14 +41,13 @@ class BinomialViewController: UIViewController {
                 //TODO: Handle correct error display later
             } else {
                 let q = 1-p
-                let description = "Binomial Distribution: (n = \(n), p = \(p))"
                 probabilities = [Double]()
                 
                 for k in 0...n {
                     let p_entry = math.choose(n: n, k: k) * pow(p, Double(k)) * pow(q, Double(n-k))
                     probabilities.append(p_entry)
                 }
-                chartUtils.updateChartDiscrete(binomialChart, probabilities, description)
+                chartUtils.updateChartDiscrete(binomialChart, probabilities)
             }
             
         } else {

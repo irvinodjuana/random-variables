@@ -34,8 +34,8 @@ class BernoulliViewController: UIViewController {
                 probabilities.append(1-p)
                 probabilities.append(p)
                 
-                let description = "Bernoulli Distribution: (p = \(p))"
-                chartUtils.updateChartDiscrete(bernoulliChart, probabilities, description)
+                chartUtils.updateChartDiscrete(bernoulliChart, probabilities)
+                chartUtils.setChartBoundsY(chart: bernoulliChart, yMin: 0, yMax: 1)
                 
             } else {
                 // p-value found not between 0 and 1

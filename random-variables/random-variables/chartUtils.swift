@@ -11,26 +11,33 @@ import Charts
 
 class chartUtils {
     // Class for generic shared chart functions/methods
-    static let graphColour = NSUIColor.orange
+    
+    // Shared variable style values
+    static let graphColour = UIColor.magenta
+    static let lineColour = graphColour.withAlphaComponent(0.4)
+    static let gridColour = UIColor.lightGray.withAlphaComponent(0.5)
+    static let circleRadius = 4.0
     
     static func setupChart(_ chartView: LineChartView) {
         // Setup basic line chart style format
-        chartView.noDataText = "Please input parameters."
+        chartView.noDataText = ""
         chartView.chartDescription?.text = ""
+        chartView.legend.enabled = false
         // x-axis properties
         chartView.xAxis.labelPosition = .bottom
-        chartView.xAxis.drawGridLinesEnabled = false
+        chartView.xAxis.drawGridLinesEnabled = true
+        chartView.xAxis.gridColor = gridColour
         chartView.xAxis.granularity = 1
         // y-axis properties
-        chartView.leftAxis.drawGridLinesEnabled = false
+        chartView.leftAxis.drawGridLinesEnabled = true
+        chartView.leftAxis.gridColor = gridColour
         chartView.leftAxis.axisMinimum = 0.0
         chartView.rightAxis.enabled = false
-        
-        
     }
     
-    static func updateChartDiscrete(_ chartView: LineChartView, _ probabilities: [Double], _ description: String, startIndex: Int = 0) {
-        // Update the graph view with new parameters
+    static func updateChartDiscrete(_ chartView: LineChartView, _ probabilities: [Double], startIndex: Int = 0) {
+        // Update the graph view with new probability set: discrete random variables
+        
         let data = LineChartData()
         
         // Format doubles to correct datatype
@@ -47,14 +54,14 @@ class chartUtils {
             
             // Format dataset into a line chart data set
             let line = LineChartDataSet(entries: lineChartEntry, label: "")
-            line.colors = [graphColour]
+            line.colors = [lineColour]
             line.circleColors = [NSUIColor.clear]
             line.circleRadius = CGFloat(0)
             
             let point = LineChartDataSet(entries: pointEntry, label: "")
             point.colors = [graphColour]
             point.circleColors = [graphColour]
-            point.circleRadius = CGFloat(5.0)
+            point.circleRadius = CGFloat(circleRadius)
             
             data.addDataSet(line)
             data.addDataSet(point)
@@ -63,12 +70,12 @@ class chartUtils {
         // Add data to chart and format nicely
         data.setDrawValues(false)
         chartView.data = data
-        chartView.legend.enabled = false
         setChartBoundsX(chart: chartView, xMin: Double(startIndex) - 1.0, xMax: Double(probabilities.count))
     }
     
-    static func updateChartContinuous(_ chartView: LineChartView, _ probabilities: [(Double, Double)], _ description: String, startIndex: Int = 0, circles: Bool = false) {
-        // update graph
+    static func updateChartContinuous(_ chartView: LineChartView, _ probabilities: [(Double, Double)], startIndex: Int = 0, circles: Bool = false) {
+        // Update the graph view with new probability set: continuous random variables
+        
         var lineChartEntry = [ChartDataEntry]()
         
         for i in 0..<probabilities.count {
@@ -78,12 +85,12 @@ class chartUtils {
         }
         
         // Format dataset into a line chart data set
-        let line = LineChartDataSet(entries: lineChartEntry, label: description)
+        let line = LineChartDataSet(entries: lineChartEntry, label: "")
         line.colors = [graphColour]
         line.mode = .cubicBezier
         
         // gradient colors
-        let gradientColours = [graphColour.cgColor, NSUIColor.clear.cgColor] as CFArray
+        let gradientColours = [graphColour.cgColor, UIColor.clear.cgColor] as CFArray
         let colourLocations: [CGFloat] = [1.0, 0.0]
         guard let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: gradientColours, locations: colourLocations) else {print("gradient error"); return}
         line.fill = Fill.fillWithLinearGradient(gradient, angle: 90.0)
@@ -91,7 +98,7 @@ class chartUtils {
         
         if circles {
             line.circleColors = [graphColour]
-            line.circleRadius = CGFloat(2.5)
+            line.circleRadius = CGFloat(circleRadius)
         } else {
             line.circleColors = [NSUIColor.clear]
             line.circleRadius = CGFloat(0)

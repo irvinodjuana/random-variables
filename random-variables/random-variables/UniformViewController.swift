@@ -37,11 +37,11 @@ class UniformViewController: UIViewController {
                 let height = 1 / (b-a)
                 probabilities.append((a, height))
                 probabilities.append((b, height))
-                
-                let description = "Uniform Distribution: (a = \(a), b = \(b))"
-                chartUtils.updateChartContinuous(uniformChart, probabilities, description, circles: true)
+
+                chartUtils.updateChartContinuous(uniformChart, probabilities, circles: true)
                 chartUtils.setChartBounds(chart: uniformChart,
-                                          xMin: a - 0.75*(b-a), xMax: b + 0.75*(b-a), yMin: 0, yMax: 2/(b-a))
+                                          xMin: a - 0.75*(b-a), xMax: b + 0.75*(b-a),
+                                          yMin: 0, yMax: 2/(b-a))
             } else {
                 // invalid as b less than a
                 print("Invalid: b must be greater than a")

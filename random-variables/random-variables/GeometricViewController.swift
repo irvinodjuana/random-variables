@@ -44,8 +44,7 @@ class GeometricViewController: UIViewController {
                     k += 1
                 }
                 
-                let description = "Geometric Distribution: (p = \(p))"
-                chartUtils.updateChartDiscrete(geometricChart, probabilities, description, startIndex: 1)
+                chartUtils.updateChartDiscrete(geometricChart, probabilities, startIndex: 1)
                 
             } else {
                 // p input not between 0 and 1

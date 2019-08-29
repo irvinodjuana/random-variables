@@ -33,14 +33,13 @@ class PoissonViewController: UIViewController {
                 
                 var k = 0
                 var p_entry = 1.0
-                while (p_entry > 0.00001) {
+                while (p_entry > 0.0000001) {
                     p_entry = pow(lambda, Double(k)) * exp(-1 * lambda) / math.factorial(k)
                     probabilities.append(p_entry)
                     k += 1
                 }
                 
-                let description = "Poisson Distribution: (lambda = \(lambda))"
-                chartUtils.updateChartDiscrete(poissonChart, probabilities, description)
+                chartUtils.updateChartDiscrete(poissonChart, probabilities)
                 
             } else {
                 // lambda inputted was less than or equal to 0
