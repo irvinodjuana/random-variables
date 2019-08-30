@@ -11,8 +11,11 @@ import Charts
 
 class NormalViewController: UIViewController {
     
-    @IBOutlet weak var mu_text: UITextField!
-    @IBOutlet weak var sigma_text: UITextField!
+    
+    @IBOutlet weak var mu_slider: UISlider!
+    @IBOutlet weak var sigma_slider: UISlider!
+    @IBOutlet weak var mu_text: UILabel!
+    @IBOutlet weak var sigma_text: UILabel!
     @IBOutlet weak var normalChart: LineChartView!
     
     var probabilities = [(Double, Double)]()
@@ -23,55 +26,51 @@ class NormalViewController: UIViewController {
         self.hideKeyboardWhenTapped()
 
         // Do any additional setup after loading the view.
+        mu_slider.minimumValue = -10
+        mu_slider.maximumValue = 10
+        mu_slider.value = 0
+        sigma_slider.minimumValue = 0.1 // sigma must be > 0
+        sigma_slider.maximumValue = 10
+        sigma_slider.value = 1
+        
         chartUtils.setupChart(normalChart)
+        chartUtils.setupSliders([mu_slider, sigma_slider])
+        sliderChanged()
     }
     
-    @IBAction func chartButton(_ sender: Any) {
-        let mu_value = Double(mu_text.text!)
-        let sigma_value = Double(sigma_text.text!)
+    func sliderChanged() {
+        // Update graph view when one/more of slider is moved
+        let mu = Double(mu_slider.value)
+        let sigma = Double(sigma_slider.value)
+        mu_text.text = String(format: "%3.1f", mu)
+        sigma_text.text = String(format: "%3.1f", sigma)
         
+        let lower = mu - 4 * sigma
+        let upper = mu + 4 * sigma
+        let step = (upper - lower) / 50
+        var x = lower
+        
+        // Add 100 evenly spaced data points along normal distribution
         probabilities = [(Double, Double)]()
-        
-        if let mu = mu_value, let sigma = sigma_value {
-            if sigma > 0 {
-                // correct input for (mu), (sigma)
-                
-                // arbitrarily define range of graphed area as (mu) +/- 4(sigma)
-                let lower = mu - 4 * sigma
-                let upper = mu + 4 * sigma
-                let step = sigma / 10  // 10 data points per std deviation
-                var x = lower
-                
-                // Add 80 evenly spaced data points along normal distribution
-                while (x <= upper) {
-                    probabilities.append((x, pdf(x, mu, sigma)))
-                    x += step
-                }
-                
-                chartUtils.updateChartContinuous(normalChart, probabilities)
-            } else {
-                // sigma inputted <= 0
-                print("Invalid: sigma must be greater than 0")
-            }
-        } else {
-            // Non-double values found in mu/sigma text fields
-            print("Invalid: non-Double mu or sigma values found")
+        while (x <= upper) {
+            probabilities.append((x, pdf(x, mu, sigma)))
+            x += step
         }
+        
+        chartUtils.updateChartContinuous(normalChart, probabilities)
+        chartUtils.setChartBounds(chart: normalChart, xMin: -10, xMax: 10, yMin: 0, yMax: 0.5)
+    }
+    
+    @IBAction func muChanged(_ sender: Any) {
+        sliderChanged()
+    }
+    @IBAction func sigmaChanged(_ sender: Any) {
+        sliderChanged()
     }
     
     func pdf(_ x: Double, _ mu: Double, _ sigma: Double) -> Double {
         // Returns pdf(x), the pdf of x of the normal distribution under mean (mu) and standard deviation (sigma)
         return (1/(sqrt(2 * Double.pi) * sigma)) * exp(-0.5 * pow(x - mu, 2) / pow(sigma,2))
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }

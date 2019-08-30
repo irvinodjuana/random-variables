@@ -73,7 +73,15 @@ class math {
         } else if rem == 0.5 || rem == -0.5  {
             return sqrt(Double.pi) * doubleFactorial(Int(2.0 * x) - 2) / pow(2, x - 0.5)
         } else {
-            return -1.0 // invalid input
+            return -1 // invalid input
         }
+    }
+}
+
+// extension for rounding Double values
+extension Double {
+    func roundToPlace(_ places: Int) -> Double {
+        let div = pow(10.0, Double(places))
+        return (self * div).rounded() / div
     }
 }

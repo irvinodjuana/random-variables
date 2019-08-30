@@ -11,8 +11,13 @@ import Charts
 
 class BinomialViewController: UIViewController {
 
-    @IBOutlet weak var n_text: UITextField!
-    @IBOutlet weak var p_text: UITextField!
+
+    @IBOutlet weak var n_slider: UISlider!
+    @IBOutlet weak var p_slider: UISlider!
+    @IBOutlet weak var n_text: UILabel!
+    @IBOutlet weak var p_text: UILabel!
+    
+    
     @IBOutlet weak var binomialChart: LineChartView!
     
     var probabilities = [Double]()
@@ -22,50 +27,38 @@ class BinomialViewController: UIViewController {
         self.hideKeyboardWhenTapped()
 
         // Setup general style and formatting
-        chartUtils.setupChart(binomialChart)
-    }
-    
-    @IBAction func chartButton(_ sender: Any) {
-        // Chart button pressed - generate chart from input parameters
-        let n_value = Int(n_text.text!)
-        let p_value = Double(p_text.text!)
+        n_slider.maximumValue = 100
+        n_slider.minimumValue = 1
         
-        if let p = p_value, let n = n_value {
-            // all inputs are correct numeric entries here
-            if p < 0.0 || p > 1.0 {
-                print("Invalid p-value, not between 0 and 1")
-                //TODO: Handle correct error display later
-            } else if n < 0 {
-                print("Invalid n-value, must be greater than 0")
-                //TODO: Handle correct error display later
-            } else {
-                let q = 1-p
-                probabilities = [Double]()
-                
-                for k in 0...n {
-                    let p_entry = math.choose(n: n, k: k) * pow(p, Double(k)) * pow(q, Double(n-k))
-                    probabilities.append(p_entry)
-                }
-                chartUtils.updateChartDiscrete(binomialChart, probabilities)
-            }
-            
-        } else {
-            // One or more non-numeric entries found for n / p
-            print("Invalid entries for n or p.")
+        chartUtils.setupChart(binomialChart)
+        chartUtils.setupSliders([n_slider, p_slider])
+        sliderChanged()
+        
+    }
+    
+    @IBAction func nChanged(_ sender: Any) {
+        sliderChanged()
+    }
+    @IBAction func pChanged(_ sender: Any) {
+        sliderChanged()
+    }
+    
+    func sliderChanged() {
+        // Update graph with new slider values
+        let p = Double(p_slider.value)
+        let q = 1 - p
+        let n = Int(n_slider.value.rounded())
+        probabilities = [Double]()
+        
+        p_text.text = String(format: "%.2f", p)
+        n_text.text = String(format: "%3i", n)
+        
+        for k in 0...n {
+            let p_entry = math.choose(n: n, k: k) * pow(p, Double(k)) * pow(q, Double(n-k))
+            probabilities.append(p_entry)
         }
-    
+        chartUtils.updateChartDiscrete(binomialChart, probabilities)
+        
     }
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 
 }

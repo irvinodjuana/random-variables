@@ -11,7 +11,10 @@ import Charts
 
 class BernoulliViewController: UIViewController {
 
-    @IBOutlet weak var p_text: UITextField!
+    
+    
+    @IBOutlet weak var p_slider: UISlider!
+    @IBOutlet weak var p_text: UILabel!
     @IBOutlet weak var bernoulliChart: LineChartView!
     var probabilities = [Double]()
     
@@ -21,42 +24,21 @@ class BernoulliViewController: UIViewController {
         
         // Setup general style and formatting
         chartUtils.setupChart(bernoulliChart)
+        chartUtils.setupSliders([p_slider])
+        sliderChanged("")
     }
     
-    @IBAction func chartButton(_ sender: Any) {
-        let p_value = Double(p_text.text!)
+    @IBAction func sliderChanged(_ sender: Any) {
+        // Update graph when slider is moved
+        let p = Double(p_slider.value)
+        p_text.text = String(format: "%.2f", p)
         
-        if let p = p_value {
-            // p is a numeric input
-            if (p >= 0 && p <= 1) {
-                // Correct input
-                let p = p_value!
-                probabilities = [Double]()
-                probabilities.append(1-p)
-                probabilities.append(p)
-                
-                chartUtils.updateChartDiscrete(bernoulliChart, probabilities)
-                chartUtils.setChartBoundsY(chart: bernoulliChart, yMin: 0, yMax: 1)
-                
-            } else {
-                // p-value found not between 0 and 1
-                print("Invalid p-value: must be between 0 and 1")
-            }
-        } else {
-            // Invalid text field for double value
-            print("Invalid entry for p")
-        }
+        probabilities = [Double]()
+        probabilities.append(1-p)
+        probabilities.append(p)
+        
+        chartUtils.updateChartDiscrete(bernoulliChart, probabilities)
+        chartUtils.setChartBoundsY(chart: bernoulliChart, yMin: 0, yMax: 1)
     }
-
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

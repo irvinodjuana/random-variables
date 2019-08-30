@@ -13,10 +13,18 @@ class chartUtils {
     // Class for generic shared chart functions/methods
     
     // Shared variable style values
-    static let graphColour = UIColor.magenta
-    static let lineColour = graphColour.withAlphaComponent(0.4)
+    static let themeColour = UIColor.magenta
+    static let lineColour = themeColour.withAlphaComponent(0.4)
     static let gridColour = UIColor.lightGray.withAlphaComponent(0.5)
     static let circleRadius = 3.0
+    
+    static func setupSliders(_ sliders: [UISlider]) {
+        // Setup general slider design
+        for slider in sliders {
+            slider.minimumTrackTintColor = themeColour
+        }
+        
+    }
     
     static func setupChart(_ chartView: LineChartView) {
         // Setup basic line chart style format
@@ -58,8 +66,8 @@ class chartUtils {
             line.circleRadius = CGFloat(0)
             
             let point = LineChartDataSet(entries: pointEntry, label: "")
-            point.colors = [graphColour]
-            point.circleColors = [graphColour]
+            point.colors = [themeColour]
+            point.circleColors = [themeColour]
             point.circleRadius = CGFloat(circleRadius)
             
             data.addDataSet(line)
@@ -86,18 +94,18 @@ class chartUtils {
         
         // Format dataset into a line chart data set
         let line = LineChartDataSet(entries: lineChartEntry, label: "")
-        line.colors = [graphColour]
+        line.colors = [themeColour]
         line.mode = .cubicBezier
         
         // gradient colors
-        let gradientColours = [graphColour.cgColor, UIColor.clear.cgColor] as CFArray
+        let gradientColours = [themeColour.cgColor, UIColor.clear.cgColor] as CFArray
         let colourLocations: [CGFloat] = [1.0, 0.0]
         guard let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: gradientColours, locations: colourLocations) else {print("gradient error"); return}
         line.fill = Fill.fillWithLinearGradient(gradient, angle: 90.0)
         line.drawFilledEnabled = true
         
         if circles {
-            line.circleColors = [graphColour]
+            line.circleColors = [themeColour]
             line.circleRadius = CGFloat(circleRadius)
         } else {
             line.circleColors = [NSUIColor.clear]
