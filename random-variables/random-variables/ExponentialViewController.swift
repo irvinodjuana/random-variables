@@ -11,7 +11,9 @@ import Charts
 
 class ExponentialViewController: UIViewController {
     
-    @IBOutlet weak var lambda_text: UITextField!
+
+    @IBOutlet weak var lambda_slider: UISlider!
+    @IBOutlet weak var lambda_text: UILabel!
     @IBOutlet weak var exponentialChart: LineChartView!
     
     var probabilities = [(Double, Double)]()
@@ -19,51 +21,39 @@ class ExponentialViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTapped()
+        
+        // Slider bounds setup
+        lambda_slider.minimumValue = 0.1
+        lambda_slider.maximumValue = 10
+        lambda_slider.value = 5
 
-        // Do any additional setup after loading the view.
+        // Display setup
         chartUtils.setupChart(exponentialChart)
+        chartUtils.setupSliders([lambda_slider])
+        chartUtils.setChartBounds(chart: exponentialChart, xMin: 0, xMax: 1, yMin: 0, yMax: 10)
+        sliderChanged("")
     }
     
-    @IBAction func chartButton(_ sender: Any) {
-        let lambda_value = Double(lambda_text.text!)
+    
+    @IBAction func sliderChanged(_ sender: Any) {
+        // Update graph when slider value is changed
+        let lambda = Double(lambda_slider.value)
+        lambda_text.text = String(format: "%3.1f", lambda)
         probabilities = [(Double, Double)]()
         
-        if let lambda = lambda_value {
-            let lower_bound = 0.00001
-            
-            if lambda > lower_bound {
-                // correct input for lambda
-                var x = 0.0
-                var p_entry = 1.0
-                let upper_x = (-1/lambda) * math.ln(lower_bound / lambda)
-                let step = upper_x / 100
-                
-                while (x <= upper_x) {
-                    p_entry = lambda * exp(-1 * lambda * x)
-                    probabilities.append((x, p_entry))
-                    x += step
-                }
-                
-                chartUtils.updateChartContinuous(exponentialChart, probabilities)
-                
-            } else {
-                // lambda inputted was <= 0
-                print("Invalid: lambda inputted must be greater than 0")
-            }
-        } else {
-            // non-Double value entered into lambda text field
-            print("Invalid: lambda must be a numeric value")
+//        let lower_bound = Double(lambda_slider.minimumValue * 0.9)
+        var x = 0.0
+        var p_entry = 1.0
+        let upper_x = 12 / lambda
+        let step = upper_x / 100
+        
+        while (x <= upper_x && x <= 10) {
+            p_entry = lambda * exp(-1 * lambda * x)
+            probabilities.append((x, p_entry))
+            x += step
         }
+        
+        chartUtils.updateChartContinuous(exponentialChart, probabilities)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

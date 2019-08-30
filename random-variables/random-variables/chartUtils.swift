@@ -96,9 +96,11 @@ class chartUtils {
         let line = LineChartDataSet(entries: lineChartEntry, label: "")
         line.colors = [themeColour]
         line.mode = .cubicBezier
+        line.lineWidth = 1.5
         
         // gradient colors
         let gradientColours = [themeColour.cgColor, UIColor.clear.cgColor] as CFArray
+//        let colourLocations: [CGFloat] = [CGFloat(min(math.max(probabilities), 1.0)), 0.0]
         let colourLocations: [CGFloat] = [1.0, 0.0]
         guard let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: gradientColours, locations: colourLocations) else {print("gradient error"); return}
         line.fill = Fill.fillWithLinearGradient(gradient, angle: 90.0)
@@ -152,6 +154,8 @@ extension UIViewController {
         view.endEditing(true)
     }
 }
+
+
 
 
 

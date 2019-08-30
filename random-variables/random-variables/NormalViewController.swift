@@ -35,6 +35,7 @@ class NormalViewController: UIViewController {
         
         chartUtils.setupChart(normalChart)
         chartUtils.setupSliders([mu_slider, sigma_slider])
+        chartUtils.setChartBounds(chart: normalChart, xMin: -10, xMax: 10, yMin: 0, yMax: 0.5)
         sliderChanged()
     }
     
@@ -45,12 +46,12 @@ class NormalViewController: UIViewController {
         mu_text.text = String(format: "%3.1f", mu)
         sigma_text.text = String(format: "%3.1f", sigma)
         
-        let lower = mu - 4 * sigma
-        let upper = mu + 4 * sigma
-        let step = (upper - lower) / 50
+        let lower = -10.0
+        let upper = 10.0
+        let step = (upper - lower) / 300
         var x = lower
         
-        // Add 100 evenly spaced data points along normal distribution
+        // Add 300 evenly spaced data points along normal distribution
         probabilities = [(Double, Double)]()
         while (x <= upper) {
             probabilities.append((x, pdf(x, mu, sigma)))
@@ -58,7 +59,6 @@ class NormalViewController: UIViewController {
         }
         
         chartUtils.updateChartContinuous(normalChart, probabilities)
-        chartUtils.setChartBounds(chart: normalChart, xMin: -10, xMax: 10, yMin: 0, yMax: 0.5)
     }
     
     @IBAction func muChanged(_ sender: Any) {
@@ -69,7 +69,7 @@ class NormalViewController: UIViewController {
     }
     
     func pdf(_ x: Double, _ mu: Double, _ sigma: Double) -> Double {
-        // Returns pdf(x), the pdf of x of the normal distribution under mean (mu) and standard deviation (sigma)
+        // Returns pdf(x), the pdf of x of the normal distribution with paramters (mu, sigma)
         return (1/(sqrt(2 * Double.pi) * sigma)) * exp(-0.5 * pow(x - mu, 2) / pow(sigma,2))
     }
     

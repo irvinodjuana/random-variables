@@ -48,6 +48,7 @@ class BinomialViewController: UIViewController {
         let p = Double(p_slider.value)
         let q = 1 - p
         let n = Int(n_slider.value.rounded())
+        n_slider.setValue(Float(n), animated: false)
         probabilities = [Double]()
         
         p_text.text = String(format: "%.2f", p)

@@ -76,7 +76,22 @@ class math {
             return -1 // invalid input
         }
     }
+    
+    static func max(_ arr: [(Double, Double)]) -> Double {
+        // return maximum value of second elements in array of tuple of doubles
+        let (_ , b) = arr[0]
+        var maximum = b
+        
+        for (_ , y) in arr {
+            if y > maximum {
+                maximum = y
+            }
+        }
+        
+        return maximum
+    }
 }
+
 
 // extension for rounding Double values
 extension Double {

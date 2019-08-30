@@ -11,8 +11,11 @@ import Charts
 
 class UniformViewController: UIViewController {
     
-    @IBOutlet weak var a_text: UITextField!
-    @IBOutlet weak var b_text: UITextField!
+    
+    @IBOutlet weak var b_slider: UISlider!
+    @IBOutlet weak var a_slider: UISlider!
+    @IBOutlet weak var a_text: UILabel!
+    @IBOutlet weak var b_text: UILabel!
     @IBOutlet weak var uniformChart: LineChartView!
     
     var probabilities = [(Double, Double)]()
@@ -21,46 +24,57 @@ class UniformViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTapped()
+        
+        // Slider bounds setup
+        a_slider.minimumValue = -5
+        a_slider.maximumValue = 5
+        a_slider.value = -1
+        b_slider.minimumValue = -5.001  // slight offset to prevent slider matching error
+        b_slider.maximumValue = 5.001
+        b_slider.value = 1
 
-        // Do any additional setup after loading the view.
+        // Display setup
         chartUtils.setupChart(uniformChart)
+        chartUtils.setupSliders([a_slider, b_slider])
+        chartUtils.setChartBounds(chart: uniformChart, xMin: -5, xMax: 5, yMin: 0, yMax: 1)
+        sliderChanged(a_slider)
     }
     
-    @IBAction func chartButton(_ sender: Any) {
-        // Chart button pressed - input values into graph
-        let a_value = Double(a_text.text!)
-        let b_value = Double(b_text.text!)
+    func sliderChanged(_ sender: UISlider) {
+        // Update graph when slider view found
+        let a = Double(a_slider.value)
+        let b = Double(b_slider.value)
+        a_text.text = String(format: "%3.2f", a)
+        b_text.text = String(format: "%3.2f", b)
+        
         probabilities = [(Double, Double)]()
         
-        if let a = a_value, let b = b_value {
-            if (b > a) {
-                // correct input
-                let height = 1 / (b-a)
-                probabilities.append((a, height))
-                probabilities.append((b, height))
-
-                chartUtils.updateChartContinuous(uniformChart, probabilities, circles: true)
-                chartUtils.setChartBounds(chart: uniformChart,
-                                          xMin: a - 0.75*(b-a), xMax: b + 0.75*(b-a),
-                                          yMin: 0, yMax: 2/(b-a))
-            } else {
-                // invalid as b less than a
-                print("Invalid: b must be greater than a")
-            }
+        if b > a {
+            // valid input values
+            let height = 1 / (b-a)
+            probabilities.append((a, height))
+            probabilities.append((b, height))
+        
+            chartUtils.updateChartContinuous(uniformChart, probabilities, circles: true)
+            
         } else {
-            // one or more non-double values found in text field
-            print("Invalid: one or more nil values found")
+            // invalid input: a >= b, move sliders to match
+            if sender == a_slider {
+                b_slider.value = a_slider.value + 0.001
+                sliderChanged(a_slider)
+            } else if sender == b_slider {
+                a_slider.value = b_slider.value - 0.001
+                sliderChanged(a_slider)
+            }
         }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func aChanged(_ sender: Any) {
+        sliderChanged(a_slider)
     }
-    */
+    
+    @IBAction func bChanged(_ sender: Any) {
+        sliderChanged(b_slider)
+    }
 
 }

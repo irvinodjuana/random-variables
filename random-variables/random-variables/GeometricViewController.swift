@@ -24,6 +24,8 @@ class GeometricViewController: UIViewController {
         self.hideKeyboardWhenTapped()
         
         // Do any additional setup after loading the view.
+        p_slider.minimumValue = 0.01
+        
         chartUtils.setupChart(geometricChart)
         chartUtils.setupSliders([p_slider])
         sliderChanged("")
