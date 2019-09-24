@@ -3,6 +3,6 @@ iOS app for visualizing probability distributions
 
 ## Sample UI Images
 
-![Binomial](/images/binomial_screenshot.png | width = 100)
+<img src="/images/binomial_screenshot" width="48">
 
-![Exponential](/images/exponential_screenshot.png | width = 100)
+<img src="/images/exponential_screenshot" width="48">
