@@ -10,8 +10,6 @@ import UIKit
 import Charts
 
 class BernoulliViewController: UIViewController {
-
-    
     
     @IBOutlet weak var p_slider: UISlider!
     @IBOutlet weak var p_text: UILabel!
@@ -25,6 +23,7 @@ class BernoulliViewController: UIViewController {
         // Setup general style and formatting
         chartUtils.setupChart(bernoulliChart)
         chartUtils.setupSliders([p_slider])
+        chartUtils.setChartBoundsY(chart: bernoulliChart, yMin: 0, yMax: 1)
         sliderChanged("")
     }
     
@@ -38,7 +37,6 @@ class BernoulliViewController: UIViewController {
         probabilities.append(p)
         
         chartUtils.updateChartDiscrete(bernoulliChart, probabilities)
-        chartUtils.setChartBoundsY(chart: bernoulliChart, yMin: 0, yMax: 1)
     }
 
 }
